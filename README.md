@@ -22,14 +22,15 @@ To compute the synchronization between the frontal theta cluster identified in [
 ### **Results:**
 The following topoplots show the results for trials marked as hits, misses, and the combination of both. Figure title show the frequency interval being explored. A potential cluster emerges in the parietal cortex which is only present in hits. However, statistical analyses through cluster-based multiple comparison correction did not reveal any significant electrodes. 
 
-![group](https://user-images.githubusercontent.com/96518571/151672510-be50ff69-e342-43e9-b9ea-894c7acbb8dc.png)
+<img src="https://user-images.githubusercontent.com/96518571/151672510-be50ff69-e342-43e9-b9ea-894c7acbb8dc.png" width="600">
 <span class="figcaption_hack">Figure 2. Hit and miss trial results.</span>
 
 
-![hits](https://user-images.githubusercontent.com/96518571/151672544-f050df8c-4505-4a8c-bfe7-339400f0d55f.png)
+<img src="https://user-images.githubusercontent.com/96518571/151672544-f050df8c-4505-4a8c-bfe7-339400f0d55f.png" width="600">
 <span class="figcaption_hack">Figure 3. Hit trial results.</span>
 
-![ misses](https://user-images.githubusercontent.com/96518571/151672569-20a3606f-1b0d-4c5a-8bb1-35c4e0918f43.png)
+
+<img src="https://user-images.githubusercontent.com/96518571/151672569-20a3606f-1b0d-4c5a-8bb1-35c4e0918f43.png" width="600">
 <span class="figcaption_hack">Figure 4. Miss trial results.</span>
 
 
