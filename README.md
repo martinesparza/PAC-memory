@@ -17,10 +17,21 @@ Taken from [Cruzat et al., 2020](https://doi.org/10.1101/2020.08.11.246421): "Pa
 <span class="figcaption_hack">Figure 1. Experimental design.</span>
 
 ### **PAC calculation:**
-To compute the synchronization between the frontal theta cluster identified in [Cruzat et al., 2020](https://doi.org/10.1101/2020.08.11.246421) (F3, F5, FC5, F7, FT7) and the gamma amplitude of the rest of the 60-channel setup, the Modulation Index (MI) parameter of [Tort et al., 2010](https://doi.org/10.1152/jn.00106.2010.) was employed. Filtering was carried out with the pre-built "eegfilt" function of Scott Makeig and Arnaud Delorme. Phase and amplitude were extracted with the Hilbert transform and used in the MI computation. Latency was set from 300 to 800 ms to avoid the phase resetting effect. FieldTrip toolbox ([Oostenveld et al. 2011](https://doi.org/10.1155/2011/156869)) was employed for the majority of analysis. 
+To compute the synchronization between the frontal theta cluster identified in [Cruzat et al., 2020](https://doi.org/10.1101/2020.08.11.246421) (F3, F5, FC5, F7, FT7) and the gamma amplitude of the rest of the 60-channel setup, the Modulation Index (MI) parameter of [Tort et al., 2010](https://doi.org/10.1152/jn.00106.2010.) was employed. Filtering was carried out with the pre-built "eegfilt" function of Scott Makeig and Arnaud Delorme. Phase and amplitude were extracted with the Hilbert transform and used in the MI computation. Latency was set from 300 to 800 ms to avoid the phase resetting effect. The employed frequencies were freom 30 to 100 Hz in windows of 20 Hz and steps of 10 Hz. FieldTrip toolbox ([Oostenveld et al. 2011](https://doi.org/10.1155/2011/156869)) was employed for the majority of analysis. 
 
 ### **Results:**
 The following topoplots show the results for trials marked as hits, misses, and the combination of both. Figure title show the frequency interval being explored. A potential cluster emerges in the parietal cortex which is only present in hits. However, statistical analyses through cluster-based multiple comparison correction did not reveal any significant electrodes. 
+
+![group](https://user-images.githubusercontent.com/96518571/151672510-be50ff69-e342-43e9-b9ea-894c7acbb8dc.png)
+<span class="figcaption_hack">Figure 2. Hit and miss trial results.</span>
+
+
+![hits](https://user-images.githubusercontent.com/96518571/151672544-f050df8c-4505-4a8c-bfe7-339400f0d55f.png)
+<span class="figcaption_hack">Figure 3. Hit trial results.</span>
+
+![ misses](https://user-images.githubusercontent.com/96518571/151672569-20a3606f-1b0d-4c5a-8bb1-35c4e0918f43.png)
+<span class="figcaption_hack">Figure 4. Miss trial results.</span>
+
 
 ### **Conclusion:**
 The reasons behind why no electrodes emerged statistically significant can be manifold (e.g., sample size, inter-participant variability, no theta-gamma PAC). Nevertheless, fronto parietal connectivity from low to high frequency oscillations is a long established neural correlate of memory formation. Perhaps additional PAC computation methods could be explored in the future. 
