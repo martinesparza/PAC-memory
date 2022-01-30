@@ -1,5 +1,7 @@
 %% PAC-Memory 
 %
+% Main loop
+%
 % Created: Tues 23 Mar 2021, 11:23
 % Author: Martin Esparza-Iaizzo
 % 
@@ -102,140 +104,141 @@ for t = 1:1%Subjects
 end
 
 %% Plotting
-% 
-% % Average MI for participants
-% 
-% MI_group = squeeze(mean(MI_global,1));
-% MI_group_hits = squeeze(mean(MI_hits,1));
-% MI_group_misses = squeeze(mean(MI_misses,1));
-% MI_diff = MI_group_hits - MI_group_misses; % Calculate difference to see the constrast
-% 
-% % Load information about electrode position
-% load Cortex_layout;
-% 
-% %Frequencies of interest (low and upper band limit)
-% foilim=30:10:100;
-% 
-% %Look for the center frequency of each frequency bin;
-% df=unique(diff(foilim))/2;
-% foi=foilim(1:end-1)+df;
-% foi = [40 50 60 70 80 90];
-% 
-% %% HITS + MISSES
-% % Create a dummy structure for plotting
-% dummy_data=[];
-% dummy_data.freq=foi; %Frequencies of interest (in Hz)
-% dummy_data.label=data_phase.label; %Make sure you take the electrodes in the same order as in the data structure
-% dummy_data.dimord='chan_freq'; %Required by Fieldtrip, to which parameter corresponds each dimension
-% dummy_data.MI=MI_group; %Here we insert the modulation index with chan x freq
-% 
-% 
-% for f=1:length(foi)
-%    h=figure;
-%    %Set plotting configuration options
-%    cfg=[];
-%    cfg.layout=layout; %Where is each electrode positioned;
-%    cfg.xlim=[foi(f) foi(f)]; %Select frequency of interest (upper and lower limit, Hz);
-%    cfg.parameter='MI'; %Parameter I want to plot;
-%    cfg.zlim=[1.3e-4 2.4e-4]; %Adjust the color scale limits (upper and lower limit)
-%    cfg.comment=' '; %Leave this field empty
-%    cfg.style='straight'; %To make the contour without lines (stetic decision)
-%    cfg.colorbar='SouthOutside'; %Where to place the colorbar
-%    cfg.highlightchannel={'F3','F5','F7','FT7','FC5'}; %Showing electrodes of the phase cluster
-%    cfg.highlight='on';
-%    cfg.marker='off'; %Do not show markers for electrodes outside the phase cluster
-%    %Call function for plotting
-%    ft_topoplotTFR(cfg,dummy_data);
-%    title(['Frequency = ' num2str(foi(f)) ' Hz']);
-%    str = sprintf('Hits Freq %i.png',f);
-% %    saveas(gcf,str)
-% 
-% end
-% 
-% %% Plot HITS
-% dummy_data=[];
-% dummy_data.freq=foi; %Frequencies of interest (in Hz)
-% dummy_data.label=data_phase.label; %Make sure you take the electrodes in the same order as in the data structure
-% dummy_data.dimord='chan_freq'; %Required by Fieldtrip, to which parameter corresponds each dimension
-% dummy_data.MI=MI_group_hits; %Here we insert the modulation index with chan x freq
-% 
-% 
-% for f=1:length(foi)
-%    h=figure;
-%    %Set plotting configuration options
-%    cfg=[];
-%    cfg.layout=layout; %Where is each electrode positioned;
-%    cfg.xlim=[foi(f) foi(f)]; %Select frequency of interest (upper and lower limit, Hz);
-%    cfg.parameter='MI'; %Parameter I want to plot;
-%    cfg.zlim=[1.3e-4 2.4e-4]; %Adjust the color scale limits (upper and lower limit)
-%    cfg.comment=' '; %Leave this field empty
-%    cfg.style='straight'; %To make the contour without lines (stetic decision)
-%    cfg.colorbar='SouthOutside'; %Where to place the colorbar
-%    cfg.highlightchannel={'F3','F5','F7','FT7','FC5'}; %Showing electrodes of the phase cluster
-%    cfg.highlight='on';
-%    cfg.marker='off'; %Do not show markers for electrodes outside the phase cluster
-%    %Call function for plotting
-%    ft_topoplotTFR(cfg,dummy_data);
-%    title(['Frequency = ' num2str(foi(f)) ' Hz']);
-%    str = sprintf('Hits Freq %i.png',f);
-% %    saveas(gcf,str)
-% 
-% end
-% 
-% %% Plot MISSES
-% dummy_data=[];
-% dummy_data.freq=foi; %Frequencies of interest (in Hz)
-% dummy_data.label=data_phase.label; %Make sure you take the electrodes in the same order as in the data structure
-% dummy_data.dimord='chan_freq'; %Required by Fieldtrip, to which parameter corresponds each dimension
-% dummy_data.MI=MI_group_misses; %Here we insert the modulation index with chan x freq
-% 
-% 
-% for f=1:length(foi)
-%    h=figure;
-%    %Set plotting configuration options
-%    cfg=[];
-%    cfg.layout=layout; %Where is each electrode positioned;
-%    cfg.xlim=[foi(f) foi(f)]; %Select frequency of interest (upper and lower limit, Hz);
-%    cfg.parameter='MI'; %Parameter I want to plot;
-%    cfg.zlim=[1.3e-4 2.4e-4]; %Adjust the color scale limits (upper and lower limit)
-%    cfg.comment=' '; %Leave this field empty
-%    cfg.style='straight'; %To make the contour without lines (stetic decision)
-%    cfg.colorbar='SouthOutside'; %Where to place the colorbar
-%    cfg.highlightchannel={'F3','F5','F7','FT7','FC5'}; %Showing electrodes of the phase cluster
-%    cfg.highlight='on';
-%    cfg.marker='off'; %Do not show markers for electrodes outside the phase cluster
-%    %Call function for plotting
-%    ft_topoplotTFR(cfg,dummy_data);
-%    title(['Frequency = ' num2str(foi(f)) ' Hz']);
-%    str = sprintf('Misses Freq %i.png',f);
-% %    saveas(gcf,str)
-% end
-% 
-% %% Plot Difference
-% dummy_data=[];
-% dummy_data.freq=foi; %Frequencies of interest (in Hz)
-% dummy_data.label=data_phase.label; %Make sure you take the electrodes in the same order as in the data structure
-% dummy_data.dimord='chan_freq'; %Required by Fieldtrip, to which parameter corresponds each dimension
-% dummy_data.MI=MI_diff; %Here we insert the modulation index with chan x freq
-% 
-% 
-% for f=1:length(foi)
-%    h=figure;
-%    %Set plotting configuration options
-%    cfg=[];
-%    cfg.layout=layout; %Where is each electrode positioned;
-%    cfg.xlim=[foi(f) foi(f)]; %Select frequency of interest (upper and lower limit, Hz);
-%    cfg.parameter='MI'; %Parameter I want to plot;
-%    cfg.zlim=[-7e-05 7e-5]; %Adjust the color scale limits (upper and lower limit)
-%    cfg.comment=' '; %Leave this field empty
-%    cfg.style='straight'; %To make the contour without lines (stetic decision)
-%    cfg.colorbar='SouthOutside'; %Where to place the colorbar
-%    cfg.highlightchannel={'F3','F5','F7','FT7','FC5'}; %Showing electrodes of the phase cluster
-%    cfg.highlight='on';
-%    cfg.marker='off'; %Do not show markers for electrodes outside the phase cluster
-%    %Call function for plotting
-%    ft_topoplotTFR(cfg,dummy_data);
-%    title(['Frequency = ' num2str(foi(f)) ' Hz']);
-%    str = sprintf('Diff RP sameaxis Freq %i.png',f);
-% %    saveas(gcf,str)
-% end
+
+% Average MI for participants
+
+MI_group = squeeze(mean(MI_global,1));
+MI_group_hits = squeeze(mean(MI_hits,1));
+MI_group_misses = squeeze(mean(MI_misses,1));
+MI_diff = MI_group_hits - MI_group_misses; % Calculate difference to see the constrast
+% Save MI_diff for statistical analysis
+
+% Load information about electrode position
+load Cortex_layout;
+
+%Frequencies of interest (low and upper band limit)
+foilim=30:10:100;
+
+%Look for the center frequency of each frequency bin;
+df=unique(diff(foilim));
+foi=foilim(1:end-2)+df;
+
+
+%% HITS + MISSES
+% Create a dummy structure for plotting
+dummy_data=[];
+dummy_data.freq=foi; %Frequencies of interest (in Hz)
+dummy_data.label=data_phase.label; %Make sure you take the electrodes in the same order as in the data structure
+dummy_data.dimord='chan_freq'; %Required by Fieldtrip, to which parameter corresponds each dimension
+dummy_data.MI=MI_group; %Here we insert the modulation index with chan x freq
+
+
+for f=1:length(foi)
+   h=figure;
+   %Set plotting configuration options
+   cfg=[];
+   cfg.layout=layout; %Where is each electrode positioned;
+   cfg.xlim=[foi(f) foi(f)]; %Select frequency of interest (upper and lower limit, Hz);
+   cfg.parameter='MI'; %Parameter I want to plot;
+   cfg.zlim=[1.3e-4 2.4e-4]; %Adjust the color scale limits (upper and lower limit)
+   cfg.comment=' '; %Leave this field empty
+   cfg.style='straight'; %To make the contour without lines (stetic decision)
+   cfg.colorbar='SouthOutside'; %Where to place the colorbar
+   cfg.highlightchannel={'F3','F5','F7','FT7','FC5'}; %Showing electrodes of the phase cluster
+   cfg.highlight='on';
+   cfg.marker='off'; %Do not show markers for electrodes outside the phase cluster
+   %Call function for plotting
+   ft_topoplotTFR(cfg,dummy_data);
+   title(['Frequency = ' num2str(foi(f)) ' Hz']);
+   str = sprintf('Hits Freq %i.png',f);
+%    saveas(gcf,str)
+
+end
+
+%% Plot HITS
+dummy_data=[];
+dummy_data.freq=foi; %Frequencies of interest (in Hz)
+dummy_data.label=data_phase.label; %Make sure you take the electrodes in the same order as in the data structure
+dummy_data.dimord='chan_freq'; %Required by Fieldtrip, to which parameter corresponds each dimension
+dummy_data.MI=MI_group_hits; %Here we insert the modulation index with chan x freq
+
+
+for f=1:length(foi)
+   h=figure;
+   %Set plotting configuration options
+   cfg=[];
+   cfg.layout=layout; %Where is each electrode positioned;
+   cfg.xlim=[foi(f) foi(f)]; %Select frequency of interest (upper and lower limit, Hz);
+   cfg.parameter='MI'; %Parameter I want to plot;
+   cfg.zlim=[1.3e-4 2.4e-4]; %Adjust the color scale limits (upper and lower limit)
+   cfg.comment=' '; %Leave this field empty
+   cfg.style='straight'; %To make the contour without lines (stetic decision)
+   cfg.colorbar='SouthOutside'; %Where to place the colorbar
+   cfg.highlightchannel={'F3','F5','F7','FT7','FC5'}; %Showing electrodes of the phase cluster
+   cfg.highlight='on';
+   cfg.marker='off'; %Do not show markers for electrodes outside the phase cluster
+   %Call function for plotting
+   ft_topoplotTFR(cfg,dummy_data);
+   title(['Frequency = ' num2str(foi(f)) ' Hz']);
+   str = sprintf('Hits Freq %i.png',f);
+%    saveas(gcf,str)
+
+end
+
+%% Plot MISSES
+dummy_data=[];
+dummy_data.freq=foi; %Frequencies of interest (in Hz)
+dummy_data.label=data_phase.label; %Make sure you take the electrodes in the same order as in the data structure
+dummy_data.dimord='chan_freq'; %Required by Fieldtrip, to which parameter corresponds each dimension
+dummy_data.MI=MI_group_misses; %Here we insert the modulation index with chan x freq
+
+
+for f=1:length(foi)
+   h=figure;
+   %Set plotting configuration options
+   cfg=[];
+   cfg.layout=layout; %Where is each electrode positioned;
+   cfg.xlim=[foi(f) foi(f)]; %Select frequency of interest (upper and lower limit, Hz);
+   cfg.parameter='MI'; %Parameter I want to plot;
+   cfg.zlim=[1.3e-4 2.4e-4]; %Adjust the color scale limits (upper and lower limit)
+   cfg.comment=' '; %Leave this field empty
+   cfg.style='straight'; %To make the contour without lines (stetic decision)
+   cfg.colorbar='SouthOutside'; %Where to place the colorbar
+   cfg.highlightchannel={'F3','F5','F7','FT7','FC5'}; %Showing electrodes of the phase cluster
+   cfg.highlight='on';
+   cfg.marker='off'; %Do not show markers for electrodes outside the phase cluster
+   %Call function for plotting
+   ft_topoplotTFR(cfg,dummy_data);
+   title(['Frequency = ' num2str(foi(f)) ' Hz']);
+   str = sprintf('Misses Freq %i.png',f);
+%    saveas(gcf,str)
+end
+
+%% Plot Difference
+dummy_data=[];
+dummy_data.freq=foi; %Frequencies of interest (in Hz)
+dummy_data.label=data_phase.label; %Make sure you take the electrodes in the same order as in the data structure
+dummy_data.dimord='chan_freq'; %Required by Fieldtrip, to which parameter corresponds each dimension
+dummy_data.MI=MI_diff; %Here we insert the modulation index with chan x freq
+
+
+for f=1:length(foi)
+   h=figure;
+   %Set plotting configuration options
+   cfg=[];
+   cfg.layout=layout; %Where is each electrode positioned;
+   cfg.xlim=[foi(f) foi(f)]; %Select frequency of interest (upper and lower limit, Hz);
+   cfg.parameter='MI'; %Parameter I want to plot;
+   cfg.zlim=[-7e-05 7e-5]; %Adjust the color scale limits (upper and lower limit)
+   cfg.comment=' '; %Leave this field empty
+   cfg.style='straight'; %To make the contour without lines (stetic decision)
+   cfg.colorbar='SouthOutside'; %Where to place the colorbar
+   cfg.highlightchannel={'F3','F5','F7','FT7','FC5'}; %Showing electrodes of the phase cluster
+   cfg.highlight='on';
+   cfg.marker='off'; %Do not show markers for electrodes outside the phase cluster
+   %Call function for plotting
+   ft_topoplotTFR(cfg,dummy_data);
+   title(['Frequency = ' num2str(foi(f)) ' Hz']);
+   str = sprintf('Diff RP sameaxis Freq %i.png',f);
+%    saveas(gcf,str)
+end
