@@ -1,7 +1,11 @@
 # PAC-memory
 Phase-amplitude coupling (PAC) in episodic memory formation between frontal theta and whole-brain gamma.
 
-Blog post: 
+- main_MI.me script generates the figures shown below. You need to point to the code folder, the Fieldtrip folder and the folder containing the data. 
+- For statistical analysis, execute rand_MI to generate the null distribution of PAC differences between hit and misses (long run time). 
+- Then, execute Cluster_statistics.m to view significant electrodes.
+
+
 ***** 
 
 ### **Motivation:**
