@@ -3,8 +3,10 @@
 % Main loop
 %
 % Created: Tues 23 Mar 2021, 11:23
-% Author: Martin Esparza-Iaizzo
+% Author: Martin Esparza-Iaizzo, Multisensory Research Group, Centre for Brain and Cognition, Barcelona, Spain. 
 % 
+% Last edited: Tues 23 May 2022, 16:01
+% Last edited by: Martin Esparza-Iaizzo
 %
 %% Change to project directory
 
