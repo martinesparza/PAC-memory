@@ -1,7 +1,7 @@
 function [MI_global,MI_hits,MI_misses] = gammaProcessing_MI(data_phase_gamma,theta_cluster,freqs,srate,chans,nbin,position,winsize)
 %gammaProcessing_MI Gamma (30-100 Hz) amplitude extraction and MI
 %calculation
-%   Detailed explanation goes here
+%   Author: Martin Esparza-Iaizzo, Multisensory Research Group, Centre for Brain and Cognition, Barcelona, Spain.
 
 MI_global = zeros(chans,length(freqs)-2); 
 MI_hits = zeros(chans,length(freqs)-2);
