@@ -1,7 +1,7 @@
 function [MI_diff_rand] = gammaProcessing_rands(data_phase_gamma,theta_cluster,freqs,srate,chans,nbin,position,winsize,rands)
 %gammaProcessing_rands Gamma (30-100 Hz) amplitude extraction, MI
 %and null distribution
-%   Detailed explanation goes here
+%   Author: Martin Esparza-Iaizzo, Multisensory Research Group, Centre for Brain and Cognition, Barcelona, Spain.
 
 MI_hits = zeros(chans,length(freqs)-2,rands);
 MI_misses = zeros(chans,length(freqs)-2,rands);
