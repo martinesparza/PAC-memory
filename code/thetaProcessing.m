@@ -1,6 +1,6 @@
 function [theta_cluster] = thetaProcessing(data_phase_theta,Pf1,Pf2,srate)
 %UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%   Author: Martin Esparza-Iaizzo, Multisensory Research Group, Centre for Brain and Cognition, Barcelona, Spain.
 
 
 %% AVERAGING
