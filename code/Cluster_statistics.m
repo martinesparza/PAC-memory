@@ -1,6 +1,8 @@
 % Cluster-based multiple comparison correction.
 % Valid for 2D data (electrode x frequency).
 % Using fieldtrip toolbox
+% 
+% Mireia Torralba Cuello, 2021, Multisensory Research Group
 
 
 
